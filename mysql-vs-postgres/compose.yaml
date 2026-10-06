@@ -1,0 +1,23 @@
+services:
+  mysql:
+    image: mysql:8.4.3
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-lab-only-pass}
+      MYSQL_DATABASE: orders
+    ports: ["3306:3306"]
+    volumes: ["./schema-mysql.sql:/docker-entrypoint-initdb.d/1.sql:ro"]
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -uroot -p$$MYSQL_ROOT_PASSWORD orders -e 'SELECT 1 FROM orders LIMIT 1'"]
+      interval: 3s
+      retries: 40
+  postgres:
+    image: postgres:16.4
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-lab-only-pass}
+      POSTGRES_DB: orders
+    ports: ["5432:5432"]
+    volumes: ["./schema-postgres.sql:/docker-entrypoint-initdb.d/1.sql:ro"]
+    healthcheck:
+      test: ["CMD-SHELL", "psql -U postgres orders -c 'SELECT 1 FROM orders LIMIT 1'"]
+      interval: 3s
+      retries: 40

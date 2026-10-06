@@ -1,0 +1,9 @@
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-CU14-ubuntu-22.04
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      MSSQL_SA_PASSWORD: ${DB_PASSWORD:-Lab-only-Pass1}
+    ports: ["1433:1433"]
+    volumes: ["./schema.sql:/schema.sql:ro"]

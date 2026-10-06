@@ -1,0 +1,9 @@
+services:
+  oracle:
+    image: gvenzl/oracle-free:23.5-slim
+    environment:
+      ORACLE_PASSWORD: ${DB_PASSWORD:-lab-only-pass}
+      APP_USER: lab
+      APP_USER_PASSWORD: ${DB_PASSWORD:-lab-only-pass}
+    ports: ["1521:1521"]
+    volumes: ["./schema.sql:/container-entrypoint-initdb.d/1.sql:ro"]

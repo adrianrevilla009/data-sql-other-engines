@@ -1,0 +1,6 @@
+engine,license,pagination,identity,skip_locked,default_isolation,best_for
+PostgreSQL 16,PostgreSQL (permissive),LIMIT/OFFSET,GENERATED AS IDENTITY,FOR UPDATE SKIP LOCKED,READ COMMITTED,general OLTP and extensions
+MySQL 8.4,GPL + commercial,LIMIT/OFFSET,AUTO_INCREMENT,FOR UPDATE SKIP LOCKED,REPEATABLE READ,web apps and read-heavy workloads
+Oracle 23ai,Proprietary (Free tier capped),OFFSET FETCH,GENERATED AS IDENTITY,FOR UPDATE SKIP LOCKED,READ COMMITTED,existing Oracle estates
+SQL Server 2022,Proprietary (Developer/Express free),OFFSET FETCH / TOP,IDENTITY,WITH (READPAST),READ COMMITTED,Microsoft stack and BI
+CockroachDB 24.2,BSL + enterprise,LIMIT/OFFSET,UUID default,FOR UPDATE SKIP LOCKED,SERIALIZABLE,multi-region distributed SQL
